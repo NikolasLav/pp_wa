@@ -23,7 +23,7 @@ var counterparty_name = document.getElementById('counterpartyName');
 });
 [counterparty_name].forEach(function(element){
     element.addEventListener('change', function(e) {
-        if (element.value.length > 30) {
+        if (element.value.length > 30 && element.value.length < 5) {
             element.style.background = "#ebabab";
                         btn.style.background = "#e3292c"
             btn.textContent = "Проверьте форму"
@@ -32,7 +32,7 @@ var counterparty_name = document.getElementById('counterpartyName');
             element.style.background = "#aafac1"
 
             btn.style.background = "blue"
-            btn.textContent = "Отправить на оплату"
+            btn.textContent = "Поиск"
             btn.removeAttribute("disabled");
         };
     });
