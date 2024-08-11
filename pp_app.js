@@ -5,6 +5,8 @@ let tg = window.Telegram.WebApp;
 tg.MainButton.textColor = "#FFFFFF";
 tg.MainButton.color = "#FF00FF";
 
+btn = document.getElementById('submit');
+
 // current date
 var today = new Date().toISOString().split('T')[0];
 document.getElementById('start-date').value = today;
@@ -14,7 +16,7 @@ document.getElementById('end-date').max = today;
 
 // forbidden symbols replace function
 var counterparty_name = document.getElementById('counterpartyName');
-[subj, counterparty_name].forEach(function(element){
+[counterparty_name].forEach(function(element){
     element.addEventListener('change', function(e) {
         element.value = element.value.replace(/[»,«]/g, "\"")
     });
