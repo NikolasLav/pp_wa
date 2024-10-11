@@ -43,6 +43,7 @@ document.getElementById("tg").addEventListener("submit", function(e){
     e.preventDefault();
 
     let data = {
+        organizationName: this.organizationName.value,
         counterpartyName: this.counterpartyName.value,
         startDate: this.startDate.value,
         endDate: this.endDate.value
