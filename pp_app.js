@@ -30,17 +30,17 @@ var counterparty_name = document.getElementById('counterpartyName');
 });
 [counterparty_name].forEach(function(element){
     element.addEventListener('change', function(e) {
-        if (element.value.length > 30 && element.value.length < 5) {
+        if (element.value.length > 70 && element.value.length < 3) {
             element.style.background = "#ebabab";
                         btn.style.background = "#e3292c"
             btn.textContent = "Проверьте форму"
-            btn.setAttribute('disabled','disabled');
+            btn.removeAttribute("disabled");
         } else {
             element.style.background = "#aafac1"
 
             btn.style.background = "blue"
             btn.textContent = "Поиск"
-            btn.removeAttribute("disabled");
+            btn.setAttribute('disabled','disabled');
         };
     });
 });
