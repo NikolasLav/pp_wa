@@ -1,53 +1,51 @@
 let tg = window.Telegram.WebApp;
-tg.expand();
+//tg.expand();
 tg.MainButton.textColor = "#FFFFFF";
 tg.MainButton.color = "#FF00FF";
 
-let btn = document.getElementById('submit'); // добавлен `let`
+btn = document.getElementById('submit');
 
-// Установка текущей даты
+// current date
 var today = new Date().toISOString().split('T')[0];
 document.getElementById('start-date').value = today;
 document.getElementById('start-date').max = today;
 document.getElementById('end-date').value = today;
 document.getElementById('end-date').max = today;
-
-// Обработка параметров из URL
 let params = new URLSearchParams(document.location.search);
 if (params.has('o')) {
     let organizationName = params.get('o');
     let query = params.get('q');
     let organization = document.getElementById('organizationName');
     let counterparty = document.getElementById('counterpartyName');
+    organization.value = organizationName;
+    counterparty.value = query;
+    };
 
-    if (organization) organization.value = organizationName;
-    if (counterparty) counterparty.value = query;
-}
-// Замена запрещённых символов
+// forbidden symbols replace function
 var counterparty_name = document.getElementById('counterpartyName');
-
-if (counterparty_name) {
-    counterparty_name.addEventListener('input', function () {
-        this.value = this.value.replace(/[»,«]/g, '"');
+[counterparty_name].forEach(function(element){
+    element.addEventListener('change', function(e) {
+        element.value = element.value.replace(/[»,«]/g, "\"")
     });
-
-    counterparty_name.addEventListener('input', function () {
-        if (this.value.length < 3 || this.value.length > 100) {
-            this.style.background = "#ebabab";
+});
+[counterparty_name].forEach(function(element){
+    element.addEventListener('change', function(e) {
+        if (element.value.length < 3 || element.value.length > 100) {
+            element.style.background = "#ebabab";
             btn.style.background = "#e3292c";
             btn.textContent = "Проверьте форму";
             btn.setAttribute('disabled', 'disabled');
         } else {
-            this.style.background = "#aafac1";
-            btn.style.background = "#2488FF";
+            element.style.background = "#aafac1";
+            btn.style.background = "blue";
             btn.textContent = "Поиск";
             btn.removeAttribute("disabled");
         }
     });
-}
+});
 
-// Отправка формы
-document.getElementById("tg").addEventListener("submit", function (e) {
+// sending data
+document.getElementById("tg").addEventListener("submit", function(e){
     e.preventDefault();
 
     let data = {
@@ -56,11 +54,8 @@ document.getElementById("tg").addEventListener("submit", function (e) {
         startDate: this.startDate.value,
         endDate: this.endDate.value
     };
-
     console.log(JSON.stringify(data, null, 4));
-
-//    tg.MainButton.setText("Производим поиск платежа");
-//    tg.MainButton.show();
-    tg.sendData(JSON.stringify(data)); // без `null, 4` — Telegram не любит многострочные JSON
-    tg.close();
+    tg.MainButton.setText("Производим поиск платежа");
+    tg.MainButton.show();
+    tg.sendData(JSON.stringify(data, null, 4));
 });
