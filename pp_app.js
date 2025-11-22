@@ -58,9 +58,9 @@ document.getElementById("tg").addEventListener("submit", function (e) {
     };
 
     console.log(JSON.stringify(data, null, 4));
-
-//    tg.MainButton.setText("Производим поиск платежа");
-//    tg.MainButton.show();
     tg.sendData(JSON.stringify(data)); // без `null, 4` — Telegram не любит многострочные JSON
+});
+
+tg.onEvent('mainButtonClicked', function () {
     tg.close();
 });
