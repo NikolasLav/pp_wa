@@ -1,4 +1,14 @@
-// ensure app
+let params = new URLSearchParams(document.location.search);
+let organizationName = 'Неизвестно'; // значение по умолчанию
+
+if (params.get('o') == '1') {
+    organizationName = 'тест 1';
+} else if (params.get('o') == '2') {
+    organizationName = 'тест 2';
+}
+
+console.log(organizationName);
+console.log(params.get('inn'));
 
 let tg = window.Telegram.WebApp;
 //tg.expand();
