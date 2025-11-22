@@ -12,12 +12,14 @@ document.getElementById('start-date').max = today;
 document.getElementById('end-date').value = today;
 document.getElementById('end-date').max = today;
 let params = new URLSearchParams(document.location.search);
-let organizationName = params.get('o');
-let query = params.get('q');
-let organization = document.getElementById('organizationName');
-let counterparty = document.getElementById('counterpartyName');
-organization.value = organizationName;
-counterparty.value = query;
+if (params.has('o')) {
+    let organizationName = params.get('o');
+    let query = params.get('q');
+    let organization = document.getElementById('organizationName');
+    let counterparty = document.getElementById('counterpartyName');
+    organization.value = organizationName;
+    counterparty.value = query;
+    };
 
 // forbidden symbols replace function
 var counterparty_name = document.getElementById('counterpartyName');
