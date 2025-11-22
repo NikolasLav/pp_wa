@@ -34,13 +34,13 @@ var counterparty_name = document.getElementById('counterpartyName');
             element.style.background = "#ebabab";
                         btn.style.background = "#e3292c"
             btn.textContent = "Проверьте форму"
-            btn.removeAttribute("disabled");
+            btn.setAttribute('disabled','disabled');
         } else {
             element.style.background = "#aafac1"
 
             btn.style.background = "blue"
             btn.textContent = "Поиск"
-            btn.setAttribute('disabled','disabled');
+            btn.removeAttribute("disabled");
         };
     });
 });
