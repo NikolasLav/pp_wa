@@ -1,15 +1,3 @@
-let params = new URLSearchParams(document.location.search);
-let organizationName = 'Неизвестно'; // значение по умолчанию
-
-if (params.get('o') == '1') {
-    organizationName = 'тест 1';
-} else if (params.get('o') == '2') {
-    organizationName = 'тест 2';
-}
-
-console.log(organizationName);
-console.log(params.get('inn'));
-
 let tg = window.Telegram.WebApp;
 //tg.expand();
 tg.MainButton.textColor = "#FFFFFF";
@@ -23,8 +11,13 @@ document.getElementById('start-date').value = today;
 document.getElementById('start-date').max = today;
 document.getElementById('end-date').value = today;
 document.getElementById('end-date').max = today;
-let test = document.getElementById('test');
-test.value = organizationName;
+let params = new URLSearchParams(document.location.search);
+let organizationName = params.get('o');
+let query = params.get('q');
+let organization = document.getElementById('organizationName');
+let counterparty = document.getElementById('counterpartyName');
+organization.value = organizationName;
+counterparty.value = query;
 
 // forbidden symbols replace function
 var counterparty_name = document.getElementById('counterpartyName');
