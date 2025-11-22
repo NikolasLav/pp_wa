@@ -23,6 +23,8 @@ document.getElementById('start-date').value = today;
 document.getElementById('start-date').max = today;
 document.getElementById('end-date').value = today;
 document.getElementById('end-date').max = today;
+let test = document.getElementById('test');
+test.value = organizationName;
 
 // forbidden symbols replace function
 var counterparty_name = document.getElementById('counterpartyName');
