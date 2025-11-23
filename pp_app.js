@@ -3,6 +3,7 @@ tg.expand();
 tg.MainButton.textColor = "#FFFFFF";
 tg.MainButton.color = "#FF00FF";
 
+const mainButton = tg.MainButton;
 let btn = document.getElementById('submit'); // добавлен `let`
 
 // Установка текущей даты
