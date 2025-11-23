@@ -61,6 +61,6 @@ document.getElementById("tg").addEventListener("submit", function (e) {
     tg.sendData(JSON.stringify(data)); // без `null, 4` — Telegram не любит многострочные JSON
 });
 
-tg.onEvent('mainButtonClicked', function () {
+tg.onEvent('btn', function () {
     tg.close();
 });
